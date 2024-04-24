@@ -91,35 +91,49 @@ class PageRepository extends Repository
     {
         $query = $this->createQuery();
         $query->getQuerySettings()->setRespectStoragePage(false);
-
-        $constraints = [$query->in('pid', $pids), $query->in('doktype', [169])];
-
+    
+        $constraints = [];
+    
+        // Basic constraints
+        if (!empty($pids)) {
+            $constraints[] = $query->in('pid', $pids);
+        }
+        $constraints[] = $query->in('doktype', [169]);
+    
+        // Search constraints
         if (!empty($string)) {
             $preparedSearch = explode(' ', trim(urldecode($string)), 5);
             $searchConstraints = [];
             foreach ($preparedSearch as $s) {
-                $searchConstraints[] = $query->logicalOr([$query->like('title', '%' . $s . '%'), $query->like('subtitle', '%' . $s . '%')]);
+                $searchConstraints[] = $query->logicalOr([
+                    $query->like('title', '%' . $s . '%'), 
+                    $query->like('subtitle', '%' . $s . '%')
+                ]);
             }
-            $constraints[] = $query->logicalOr($searchConstraints);
+            if (!empty($searchConstraints)) {
+                $constraints[] = $query->logicalOr($searchConstraints);
+            }
         }
-
+    
+        // Additional filters
         if (!empty($color)) {
             $constraints[] = $query->equals('color', $color);
         }
-
         if (!empty($origin)) {
             $constraints[] = $query->like('origin', '%' . $origin . '%');
         }
-
-        $query->matching($query->logicalAnd($constraints));
-
-        // Paginierung
+    
+        if (!empty($constraints)) {
+            $query->matching($query->logicalAnd($constraints));
+        }
+    
         $query->setLimit((int)$limit);
         if ($offset > 0) {
             $query->setOffset((int)$offset);
         }
-
+    
         return $query->execute();
     }
+    
 
 }
