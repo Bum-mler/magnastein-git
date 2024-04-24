@@ -94,11 +94,13 @@ class PageRepository extends Repository
     
         $constraints = [];
     
+        // Grundlegende Einschränkungen
         if (!empty($pids)) {
             $constraints[] = $query->in('pid', $pids);
         }
         $constraints[] = $query->in('doktype', [169]);
     
+        // Suchbedingungen
         if (!empty($string)) {
             $preparedSearch = explode(' ', trim(urldecode($string)), 5);
             $searchConstraints = [];
@@ -111,6 +113,7 @@ class PageRepository extends Repository
             }
         }
     
+        // Zusätzliche Filter
         if (!empty($color)) {
             $constraints[] = $query->equals('color', $color);
         }
@@ -118,10 +121,13 @@ class PageRepository extends Repository
             $constraints[] = $query->like('origin', '%' . $origin . '%');
         }
     
-        if (count($constraints) > 1) {
-            $query->matching($query->logicalAnd($constraints));
-        } else if (count($constraints) == 1) {
-            $query->matching($constraints[0]);
+        // Anwenden der Constraints
+        if (!empty($constraints)) {
+            if (count($constraints) == 1) {
+                $query->matching($constraints[0]); // Direkt das einzelne Constraint verwenden
+            } else {
+                $query->matching($query->logicalAnd($constraints)); // `logicalAnd` nur verwenden, wenn mehrere Constraints vorhanden sind
+            }
         }
     
         $query->setLimit((int)$limit);
@@ -130,6 +136,7 @@ class PageRepository extends Repository
         }
     
         return $query->execute();
-    }    
-
+    }
+    
+    
 }
