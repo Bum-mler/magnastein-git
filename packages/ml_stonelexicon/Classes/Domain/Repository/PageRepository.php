@@ -49,13 +49,12 @@ class PageRepository extends Repository
     {
         $query = $this->createQuery();
         $query->getQuerySettings()->setRespectStoragePage(false);
-
-        $conditions = [];
-        $conditions[] = $query->in('pid', $pids);
-        $query->matching(
-            $query->logicalAnd($conditions)
-        );
-
+    
+        if (!empty($pids)) {
+            $condition = $query->in('pid', $pids);
+            $query->matching($condition);
+        }
+    
         return $query->execute();
     }
 
