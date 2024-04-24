@@ -94,28 +94,23 @@ class PageRepository extends Repository
     
         $constraints = [];
     
-        // Basic constraints
         if (!empty($pids)) {
             $constraints[] = $query->in('pid', $pids);
         }
         $constraints[] = $query->in('doktype', [169]);
     
-        // Search constraints
         if (!empty($string)) {
             $preparedSearch = explode(' ', trim(urldecode($string)), 5);
             $searchConstraints = [];
             foreach ($preparedSearch as $s) {
-                $searchConstraints[] = $query->logicalOr([
-                    $query->like('title', '%' . $s . '%'), 
-                    $query->like('subtitle', '%' . $s . '%')
-                ]);
+                $searchConstraints[] = $query->like('title', '%' . $s . '%');
+                $searchConstraints[] = $query->like('subtitle', '%' . $s . '%');
             }
             if (!empty($searchConstraints)) {
                 $constraints[] = $query->logicalOr($searchConstraints);
             }
         }
     
-        // Additional filters
         if (!empty($color)) {
             $constraints[] = $query->equals('color', $color);
         }
@@ -123,12 +118,10 @@ class PageRepository extends Repository
             $constraints[] = $query->like('origin', '%' . $origin . '%');
         }
     
-        if (!empty($constraints)) {
-            if (count($constraints) == 1) {
-                $query->matching($constraints[0]); // Directly use the single constraint
-            } else {
-                $query->matching($query->logicalAnd($constraints)); // Use logicalAnd only if there are multiple constraints
-            }
+        if (count($constraints) > 1) {
+            $query->matching($query->logicalAnd($constraints));
+        } else if (count($constraints) == 1) {
+            $query->matching($constraints[0]);
         }
     
         $query->setLimit((int)$limit);
@@ -137,7 +130,6 @@ class PageRepository extends Repository
         }
     
         return $query->execute();
-    }
-    
+    }    
 
 }
