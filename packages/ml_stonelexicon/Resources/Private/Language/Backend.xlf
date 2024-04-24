@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+   <file source-language="en" datatype="plaintext" original="EXT:ml_stonelexicon/Resources/Private/Language/Backend.xlf" date="2023-11-30T10:30:00Z" product-name="ml_stonelexicon">
+        <header/>
+        <body>
+			<trans-unit id="tx_mlstonelexicon_domain_model_stone" resname="tx_mlstonelexicon_domain_model_stone">
+				<source>ml_stonelexicontone</source>
+			</trans-unit>
+			<trans-unit id="title" resname="title">
+				<source>Title</source>
+			</trans-unit>
+			<trans-unit id="description" resname="description">
+				<source>Description</source>
+			</trans-unit>
+			<trans-unit id="images" resname="images">
+				<source>Images</source>
+			</trans-unit>
+
+			<trans-unit id="tx_mlstonelexicon_domain_model_stone.rocktype" resname="tx_mlstonelexicon_domain_model_stone.rocktype">
+				<source>Rocktype</source>
+			</trans-unit>			
+			<trans-unit id="tx_mlstonelexicon_domain_model_stone.subgroup" resname="tx_mlstonelexicon_domain_model_stone.subgroup">
+				<source>Subgroup</source>
+			</trans-unit>
+			<trans-unit id="tx_mlstonelexicon_domain_model_stone.age" resname="tx_mlstonelexicon_domain_model_stone.age">
+				<source>Age</source>
+			</trans-unit>
+			<trans-unit id="tx_mlstonelexicon_domain_model_stone.origin" resname="tx_mlstonelexicon_domain_model_stone.origin">
+				<source>Origin</source>
+			</trans-unit>
+			<trans-unit id="tx_mlstonelexicon_domain_model_stone.color" resname="tx_mlstonelexicon_domain_model_stone.color">
+				<source>Color</source>
+			</trans-unit>
+			<trans-unit id="tx_mlstonelexicon_domain_model_stone.structure" resname="tx_mlstonelexicon_domain_model_stone.structure">
+				<source>Structure</source>
+			</trans-unit>
+			<trans-unit id="tx_mlstonelexicon_domain_model_stone.structure" resname="tx_mlstonelexicon_domain_model_stone.indoordry_1">
+				<source>Structure</source>
+			</trans-unit>  			
+
+
+            <trans-unit id="wizard.group.lexicon" resname="wizard.group.lexicon">
+                <source>Lexicon</source>
+            </trans-unit>
+            <trans-unit id="tt_content.list_type_list" resname="tt_content.list_type_list">
+                <source>List</source>
+            </trans-unit>
+             <trans-unit id="tt_content.list_type_search" resname="tt_content.list_type_search">
+                <source>Search</source>
+            </trans-unit>
+
+            <trans-unit id="backend_layout.lexicon" resname="images">
+                <source>Lexicon</source>
+            </trans-unit>        
+
+        </body>
+    </file>
+</xliff>

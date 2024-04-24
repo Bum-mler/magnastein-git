@@ -1,0 +1,31 @@
+// Grundkonfiguration für die Persistenzschicht der Extension
+plugin.tx_mlstonelexicon {
+    persistence {
+        // Definiert eine Kategorie für das Plugin in einem Backend-Formular
+        cat=plugin.tx_mlstonelexicon//a; type=string; label=Default storage PID
+        // Liste der Speicher-PIDs (Page IDs), auf denen die Extension-Datensätze gespeichert werden
+        storagePid = 303,304,305,306,307,308
+    }
+}
+
+// Typoscript-Konfiguration für das Rendering des Frontend-Plugins mittels Fluid
+page {
+    fluidtemplate {
+        layoutRootPath = EXT:ml_stonelexicon/Resources/Private/Layouts/
+        partialRootPath = EXT:ml_stonelexicon/Resources/Private/Partials/
+        templateRootPath = EXT:ml_stonelexicon/Resources/Private/Templates/
+    }
+}
+
+// Einstellungen spezifisch für das Frontend-Plugin der Extension
+plugin.tx_mlstonelexicon {
+    settings {
+        listStones {
+            // Anzahl der Elemente pro Seite für die Paginierung
+            itemsPerPage = 10
+            // Schwellenwert für die Paginierung
+            paginationThreshold = 10
+        }
+    }
+}
+

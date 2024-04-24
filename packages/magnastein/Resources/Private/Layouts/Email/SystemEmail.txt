@@ -1,0 +1,6 @@
+<f:spaceless><f:render section="Title" optional="true" />
+<f:render section="Main" /></f:spaceless>
+
+Diese E-Mail wurde gesendet von {typo3.sitename} from URL: {normalizedParams.siteUrl}
+
+Bitte wenden Sie sich an Ihren Administrator, wenn Sie das Gefühl haben, dass Sie diese E-Mail versehentlich erhalten haben.

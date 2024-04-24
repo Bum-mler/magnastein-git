@@ -1,0 +1,7 @@
+# INDEXED SEARCH
+@import 'EXT:indexed_search/Configuration/TypoScript/constants.typoscript'
+
+// Seite mit den Suchergebnissen
+plugin.tx_indexedsearch.settings.targetPid = 1528
+// Suche root Seiten
+plugin.tx_indexedsearch.settings.rootPidList = 111,112,113,114,917,918

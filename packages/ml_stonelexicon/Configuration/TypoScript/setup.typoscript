@@ -1,0 +1,75 @@
+module.tx_mlstonelexicon {
+  persistence {
+    storagePid = {$module.tx_mlstonelexicon.persistence.storagePid}
+  }
+  features {
+    requireCHashArgumentForActionArguments = 0
+  }
+}
+
+// laden javascript / scss auf der rootseite mit der id=38
+[38 in tree.rootLineIds]
+page {
+  includeCSS {
+    lexikon = EXT:ml_stonelexicon/Resources/Public/Scss/lexikon.scss
+  }
+  includeJSLibs {
+    jquery = https://code.jquery.com/jquery-3.7.1.min.js
+    jquery.external = 1
+    jquery.integrity = sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=
+    jquery.crossorigin = anonymous
+    lexikon = EXT:ml_stonelexicon/Resources/Public/JavaScript/Scr/plugins.js
+  }
+  includeJS {
+    // jqueryUi = EXT:ml_stonelexicon/Resources/Public/JavaScript/Scr/jquery-ui.js
+  }
+  includeJSFooterlibs {
+
+  }
+  includeJSFooter {
+    
+  }
+}
+[global]
+
+## no cache Suchformular listAction
+ajaxLexiconResponse = PAGE
+ajaxLexiconResponse {
+  config {
+    additionalHeaders.10.header = Content-Type: application/json
+    additionalHeaders.10.header = Content-Type: application/json
+    no_cache = 1
+    disableAllHeaderCode = 1
+    disablePrefixComment = 1
+    xhtml_cleaning = 0
+    admPanel = 0
+    debug = 0
+  }
+  typeNum = 1452982642
+  10 = USER_INT
+  10 {
+    userFunc = Simplesigns\MlStonelexicon\Controller\ListStoneController->listRecordsOnPage
+  }
+}
+## no cache Suchformular listAction
+jsonview = PAGE
+jsonview.typeNum = 26
+jsonview.10 = USER
+jsonview.10.userFunc = Simplesigns\MlStonelexicon\Controller\JsonController->listAction
+jsonview.10.config.disableAllHeaderCode = 1
+jsonview.10.config.additionalHeaders.10.header = Content-Type: application/json
+
+// Fluid Bild Lexikon in der Listen Ansicht für das FE
+lib.lexiconThumbnails = FLUIDTEMPLATE
+lib.lexiconThumbnails {
+  file = EXT:ml_stonelexicon/Resources/Private/Partials/Images.html
+  dataProcessing.10 = TYPO3\CMS\Frontend\DataProcessing\FilesProcessor
+  dataProcessing.10 {
+    references {
+      table = pages
+      fieldName = thumbnail
+    }
+    as = images
+  }
+}
+

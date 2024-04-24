@@ -1,0 +1,76 @@
+# INDEXED SEARCH
+@import 'EXT:indexed_search/Configuration/TypoScript/setup.typoscript'
+
+plugin.tx_indexedsearch {
+    view {
+        templateRootPaths {
+            20 = EXT:bootstrap_package/Resources/Private/Templates/IndexedSearch/
+            21 = {$plugin.bootstrap_package.view.templateRootPath}IndexedSearch/
+            22 = EXT:magnastein/Resources/Private/Templates/IndexedSearch/
+        }
+        partialRootPaths {
+            20 = EXT:bootstrap_package/Resources/Private/Partials/IndexedSearch/
+            21 = {$plugin.bootstrap_package.view.partialRootPath}IndexedSearch/
+            22 = EXT:magnastein/Resources/Private/Partials/IndexedSearch/
+        }
+        layoutRootPaths {
+            20 = EXT:bootstrap_package/Resources/Private/Layouts/IndexedSearch/
+            21 = {$plugin.bootstrap_package.view.layoutRootPath}IndexedSearch/
+            22 = EXT:magnastein/Resources/Private/Layouts/IndexedSearch/
+        }
+    }
+}
+
+// Enable TYPO3 Indexing
+config {
+  index_enable = 1
+  index_externals = 0
+  index_metatags = 0
+}
+
+
+// Anzahl der Suchergebnisse pro Seite
+plugin.tx_indexedsearch._DEFAULT_PI_VARS.results = 5
+
+// Suche für eine Vollwortsuche
+plugin.tx_indexedsearch._DEFAULT_PI_VARS.type = 1
+
+// verhindert doppelte Seiten in den Suchergebnissen
+plugin.tx_indexedsearch.settings.exactCount = 1
+plugin.tx_indexedsearch.search.exactCount = 1
+
+// registrierte Dateitypen z.B. png, pdf = kein Eintrag alle Dateitypen ausgeschlossen
+plugin.tx_indexedsearch.settings.mediaList = 
+
+// entfernen Attribute Seite/Page und next previous
+plugin.tx_indexedsearch._LOCAL_LANG.de.displayResults.page =
+plugin.tx_indexedsearch._LOCAL_LANG.default.displayResults.next = >>
+plugin.tx_indexedsearch._LOCAL_LANG.default.displayResults.previous = <<
+
+plugin.tx_indexedsearch.settings {
+
+    displayLevel1Sections = 1
+
+    // Anzeigen des Link, zur Seite mit der erweiterten Suche
+    displayAdvancedSearchLink = 0
+
+    // Bestimmt die Länge des beschnittenen Titel 
+    results.titleCropSignifier = 100
+    
+    // Bestimmt die Länge der beschnittenen Zusammenfassung
+    results.summaryCropAfter = 500
+
+    // registrierte Dateitypen z.B. png, pdf = kein Eintrag alle Dateitypen ausgeschlossen
+    mediaList = 
+
+    show {
+   
+        // empty formfield after search
+        clearSearchBox = 0
+     
+        // add searchterm to history
+        clearSearchBox.enableSubSearchCheckBox=1
+   
+    }
+
+}

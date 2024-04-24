@@ -1,0 +1,128 @@
+// Abhängigkeiten
+@import 'EXT:bootstrap_package/Configuration/TypoScript/setup.typoscript'
+// @import 'EXT:magnastein/Configuration/TypoScript/Extension/IndexedSearch/setup.typoscript'
+// @import 'EXT:sourceopt/Configuration/TypoScript/setup'
+
+// @import 'EXT:magnastein/Configuration/TypoScript/Extension/Crawler/setup.typoscript'
+// @import 'EXT:magnastein/Configuration/TypoScript/Extension/Cleverreach/setup.typoscript'
+
+// FehlerAnzeige  1 = „Oops, an error occurred. Code: %s“
+config.contentObjectExceptionHandler = 0
+
+// Komprimieren der Assets
+config.compressCss = 0
+config.compressJs = 0
+// Verketten der Assets
+config.concatenateCss = 0
+config.concatenateJs = 0
+
+// [backend.user.isLoggedIn]
+// config {
+//     concatenateJs = 0
+//     compressJs = 0
+//     config.compressCss = 0
+//     config.compressJs = 0
+//     sourceopt.formatHtml = 0
+// }
+// [global]
+
+
+// apple-touch-icon
+page.headerData.1709109423 = TEXT
+page.headerData.1709109423.value (
+    <link rel="apple-touch-icon-precomposed" type="image/png" href="{f:uri.resource(path: 'EXT:magnastein/Resources/Public/Images/apple-touch-icon-144x144.png')}" />
+)
+page.headerData.1709109423.insertData = 1
+
+// DNS Auflösung beschleunigen von stats.simplesigns.de
+page.headerData.1646844592 = TEXT
+page.headerData.1646844592.value = <link rel="dns-prefetch" href="//stats.simplesigns.de">
+
+// scss / js / header / footer
+page {
+    includeCSS {
+        theme = EXT:magnastein/Resources/Public/Scss/Theme/magnastein.scss
+    }
+    includeJSLibs {
+    }
+    includeJS {
+        magnastein_scripts = EXT:magnastein/Resources/Public/JavaScript/Dist/matomo-min.js
+        magnastein_scripts.defer = 1
+    }
+    includeJSFooterlibs {
+    }
+    includeJSFooter {
+    }
+}
+
+// Security CSP 
+config {
+    additionalHeaders.10.header = Strict-Transport-Security: max-age=31536000; includeSubDomains
+    additionalHeaders.21.header = X-Frame-Options: sameorigin
+    additionalHeaders.30.header = Referrer-Policy: strict-origin-when-cross-origin
+    additionalHeaders.40.header = Permissions-Policy: geolocation=(), midi=(), camera=(), usb=(), magnetometer=(), accelerometer=(), vr=(), speaker=(), ambient-light-sensor=(), gyroscope=(), microphone=()
+}
+
+// Matomo
+page.footerData.1646845200 = TEXT
+page.footerData.1646845200.value (
+    <noscript>
+        <img referrerpolicy="no-referrer-when-downgrade" src="https://stats.simplesigns.de/matomo.php?idsite=1&amp;rec=1" style="border:0" alt="" />
+    </noscript>
+)
+
+// high-resolution frontend
+lib.contentElement.settings.responsiveimages.variants {
+    default {
+        sizes {
+            1\.5x {
+                multiplier = 1.5
+            }
+            2x {
+                multiplier = 2
+            }
+        }
+    }
+}
+lib.contentElement.settings.responsiveimages.variants {
+    default {
+        breakpoint = 1200
+        width = 1100
+    }
+    large {
+        breakpoint = 992
+        width = 920
+    }
+    medium {
+        breakpoint = 768
+        width = 680
+    }
+    small {
+        breakpoint = 576
+        width = 680
+    }
+    extrasmall {
+        breakpoint = unset
+        width = 680
+    }
+}
+
+// SEO Konfiguration
+// Externer Link (3) | Shortcut (4) | Spacer (199) | Lexikon (169)
+plugin.tx_seo {
+    config {
+        xmlSitemap {
+            sitemaps {
+                pages {
+                    config {
+                        excludedDoktypes = 3, 4, 199 
+                        additionalWhere = AND (no_index = 0 OR no_follow = 0)
+                        rootPage = 1
+                        excludePagesRecursive = 730, 1492
+                    }
+                }
+            }
+        }
+    }
+}
+

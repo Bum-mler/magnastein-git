@@ -1,0 +1,99 @@
+{namespace ml=Simplesigns\MlStonelexicon\ViewHelpers}
+
+<f:cache.disable>
+    <!-- Suchformular-Abschnitt -->
+    <f:section name="SearchForm">
+        <f:form name="search" id="searchForm" action="search" controller="Stone" method="POST" enctype="multipart/form-data" pageUid="584">
+
+            <!-- Versteckte Felder für Farbsuche -->
+            <f:form.hidden name="searchColor" value="{searchColor}" />
+            <f:if condition="{pid}"><f:form.hidden name="pid" id="pid" value="{pid}" /></f:if>
+
+            <!-- Farbauswahl -->
+            <div class="row">
+                <div class="form-group col-md-4">
+                    <f:for each="{allColors}" as="color">
+                        <f:form.button
+                            type="submit"
+                            class="btn-lexikon btn-sm lexikon-{color}"
+                            title="{f:translate(key: 'color.{color}', extensionName: 'ml_stonelexicon')}"
+                            name="searchColor"
+                            value="{color}"
+                        >
+                        </f:form.button>
+                    </f:for>
+                </div>
+
+                <!-- Dropdown für Abbauorte -->
+                <div class="form-group col-md-4">
+                    <f:if condition="{allOrigins}">
+                        <f:form.select 
+                            name="searchOrigin"
+                            id="searchOrigin"
+                            class="form-control form-select"
+                            options="{allOrigins}"
+                            value="{origin}"
+                            sortByOptionLabel="true"
+                            prependOptionLabel="-- Abbauort --"
+                            additionalAttributes="{onchange: 'handleOriginChange(this.value)'}"
+                        />
+                    </f:if>
+                </div>
+
+                <!-- Textsuche -->
+                <div class="form-group col-md-4">
+                    <div class="input-group">
+                        <f:form.textfield name="searchString" id="searchString" value="{search}" class="form-control search-query ui-autocomplete-input" placeholder="Suchbegriff eingeben" />
+
+                        <button type="submit" class="btn btn-outline-primary" aria-label="Suchen">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search"
+                                viewBox="0 0 16 16">
+                                <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z">
+                                </path>
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Abstand vor und nach dem Suchformular -->
+            <div class="frame-space-before-none frame-space-after-none"></div>
+        </f:form>
+
+        <!-- Gefundene Suchergebnisse als Meldungen -->
+        <div class="row">
+            <f:if condition="{searchColor}">
+                <f:form name="search" id="searchFormClearColor" class="col-sm" action="search" controller="Stone" method="POST" enctype="multipart/form-data" pageUid="584">
+                    <f:if condition="{pid}"><f:form.hidden name="pid" value="{pid}" /></f:if>
+                    <f:if condition="{origin}"><f:form.hidden name="searchOrigin" value="{origin}" /></f:if>
+                    <f:if condition="{search}"><f:form.hidden name="searchString" value="{search -> f:sanitize.html()}" /></f:if>
+                    <div class="alert alert-primary alert-dismissible fade show" role="alert">Farbe &raquo; {f:translate(key: 'color.{searchColor}')}
+                        <button type="submit" class="btn-sm btn-close" aria-label="Close"></button>
+                    </div>
+                </f:form>
+            </f:if>
+
+            <f:if condition="{origin}">
+                <f:form name="search" id="searchFormClearorigin" class="col-sm" action="search" controller="Stone" method="POST" enctype="multipart/form-data" pageUid="584">
+                    <f:if condition="{pid}"><f:form.hidden name="pid" value="{pid}" /></f:if>
+                    <f:if condition="{searchColor}"><f:form.hidden name="searchColor" value="{searchColor}" /></f:if>
+                    <f:if condition="{search}"><f:form.hidden name="searchString" value="{search -> f:sanitize.html()}" /></f:if>
+                    <div class="alert alert-primary alert-dismissible fade show" role="alert">Abbauort &raquo; {origin}
+                        <button type="submit" class="btn-sm btn-close" aria-label="Close"></button>
+                    </div>
+                </f:form>
+            </f:if>
+
+            <f:if condition="{search}">
+                <f:form name="search" id="searchFormClearString" class="col-sm" action="search" controller="Stone" method="POST" enctype="multipart/form-data" pageUid="584">
+                    <f:if condition="{pid}"><f:form.hidden name="pid" value="{pid}" /></f:if>
+                    <f:if condition="{origin}"><f:form.hidden name="searchOrigin" value="{origin}" /></f:if>
+                    <f:if condition="{searchColor}"><f:form.hidden name="searchColor" value="{searchColor}" /></f:if>
+                    <div class="alert alert-primary alert-dismissible fade show" role="alert">Material Name &raquo; {search -> f:sanitize.html()}
+                        <button type="submit" class="btn-sm btn-close" aria-label="Close"></button>
+                    </div>
+                </f:form>
+            </f:if>
+        </div>
+    </f:section>
+</f:cache.disable>

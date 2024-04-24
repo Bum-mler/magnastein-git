@@ -1,0 +1,27 @@
+// tx-indexedsearch-browsebox Pagination
+
+// nav ul
+.tx-indexedsearch-browsebox {
+  @extend .pagination;
+  margin-top: 1rem !important;
+  margin-bottom: 1rem !important;
+}
+// nav ul li a
+.tx-indexedsearch-page-selector{
+  @extend .page-link;
+}
+// nav ul li currentPage
+.tx-indexedsearch-browselist-currentPage {
+  @extend .page-item;
+  @extend .active; 
+}
+// nav ul li browselist-prev
+.tx-indexedsearch-browselist-prev {
+  @extend .page-item;
+  // @extend .page-item-previous;
+}
+// nav ul li browselist-next
+.tx-indexedsearch-browselist-next {
+  @extend .page-item;
+  // @extend .page-item-next;
+}

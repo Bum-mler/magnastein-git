@@ -1,0 +1,69 @@
+
+    {namespace ml=Simplesigns\MlStonelexicon\ViewHelpers}
+    <!-- lädt aus Layouts die Stone.html die Liste der Steine in den Gruppen und die Backendlayoutdatei -->
+    <f:layout name="Stone" />
+
+    <f:section name="Main">
+        <f:debug>{_all}</f:debug>
+        <header class="frame-header">
+            <h1 class="element-header ">
+                {pageTitle}
+                <span class="badge bg-primary ">
+                    <f:count>{stones}</f:count>
+                </span>
+                <p>List.html</p>
+            </h1>
+        </header>
+
+        <f:render partial="SearchForm" section="SearchForm" arguments="{pid:pid, stones:stones, allOrigins:allOrigins, origin:origin,  allColors:allColors, searchColor:searchColor, search:search}" />
+
+        <f:flashMessages />
+
+        <f:if condition="{stones}"> 
+            <f:then>
+                <div class="card-menu card-menu card-menu-align-left card-menu-columns-4">
+                    <f:for each="{stones}" as="stone" key="number" iteration="itemIteration">
+                        <div class="card-menu-item">
+                            <div class="card">
+                                <div class="card-img-top">
+                                    <f:link.page pageUid="{stone.uid}">
+                                        <f:cObject typoscriptObjectPath="lib.lexiconThumbnails" data="{uid: stone.uid}" />
+                                    </f:link.page>
+                                </div>
+                                <div class="card-body">
+                                    <f:link.page pageUid="{stone.uid}">
+                                        <h3 class="card-title">{stone.title}</h3>
+                                    </f:link.page>
+                                    <f:if condition="{stone.subtitle}">
+                                        <h4 class="card-subtitle">{stone.subtitle}</h4>
+                                    </f:if>
+                                    <p>{data.rocktype}</p>
+                                    <p>{data.subgroup}</p>
+                                </div>
+                                <div class="card-footer">
+                                    <f:link.page pageUid="{stone.uid}">
+                                        <span class="btn-text"> weiterlesen </span>
+                                    </f:link.page>
+                                </div>
+                            </div>
+                        </div>
+                    </f:for>
+                </div>
+            </f:then>
+            <f:else>
+                <div class="alert alert-danger" role="alert">Leider ergab Ihre Suche, nach
+                    Farbe &raquo; {f:translate(key: 'color.{searchColor}')}
+                    Abbauort &raquo; {origin}
+                    Material Name &raquo; {search-> f:sanitize.html()}
+                    keine Ergebnisse.
+                </div>
+            </f:else>
+        </f:if>
+
+        <div
+            class="frame frame-default frame-type-header frame-layout-0 frame-background-none frame-no-backgroundimage frame-space-before-none frame-space-after-none">
+            <f:link.page pageUid="38" class="back btn btn-outline-primary">&laquo; Übersicht Naturstein</f:link.page>
+        </div>
+
+    </f:section>
+

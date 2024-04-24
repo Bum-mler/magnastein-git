@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+   <file source-language="en" datatype="plaintext" target-language="de" original="EXT:ml_stonelexicon/Resources/Private/Language/Backend.xlf" date="2023-11-30T10:30:00Z" product-name="ml_stonelexicon">
+      <header/>
+        <header/>
+		
+        <body>
+			<trans-unit id="tx_mlstonelexicon_domain_model_stone" resname="tx_mlstonelexicon_domain_model_stone">
+				<source>Stone</source>
+				<target>Stein</target>
+			</trans-unit>
+			<trans-unit id="title" resname="title">
+				<source>Title</source>
+				<target>Titel</target>
+			</trans-unit>
+			<trans-unit id="description" resname="description">
+				<source>Description</source>
+				<target>Beschreibung</target>
+			</trans-unit>
+			<trans-unit id="images" resname="images">
+				<source>Images</source>
+				<target>Bild</target>
+			</trans-unit>
+
+			<trans-unit id="tx_mlstonelexicon_domain_model_stone.rocktype" resname="tx_mlstonelexicon_domain_model_stone.rocktype">
+				<source>Rocktype</source>
+				<target>Gesteinsart</target>
+			</trans-unit>			
+			<trans-unit id="tx_mlstonelexicon_domain_model_stone.subgroup" resname="tx_mlstonelexicon_domain_model_stone.subgroup">
+				<source>Subgroup</source>
+				<target>Untergruppe</target>
+			</trans-unit>
+			<trans-unit id="tx_mlstonelexicon_domain_model_stone.age" resname="tx_mlstonelexicon_domain_model_stone.age">
+				<source>Age</source>
+				<target>Alter</target>
+			</trans-unit>
+			<trans-unit id="tx_mlstonelexicon_domain_model_stone.origin" resname="tx_mlstonelexicon_domain_model_stone.origin">
+				<source>Origin</source>
+				<target>Abbauort</target>
+			</trans-unit>
+			<trans-unit id="tx_mlstonelexicon_domain_model_stone.color" resname="tx_mlstonelexicon_domain_model_stone.color">
+				<source>Color</source>
+				<target>Farbe</target>
+			</trans-unit>
+			<trans-unit id="tx_mlstonelexicon_domain_model_stone.structure" resname="tx_mlstonelexicon_domain_model_stone.structure">
+				<source>Structure</source>
+				<target>Struktur</target>
+			</trans-unit>                                 
+
+            <trans-unit id="wizard.group.lexicon" resname="wizard.group.lexicon">
+                <source>Lexicon</source>
+				<target>Lexikon</target>
+            </trans-unit>
+
+            <trans-unit id="tt_content.list_type_list" resname="tt_content.list_type_list">
+                <source>list</source>
+				<target>Liste</target>
+            </trans-unit>
+             <trans-unit id="tt_content.list_type_search" resname="tt_content.list_type_search">
+                <source>Search</source>
+				<target>Suche</target>
+            </trans-unit>
+
+            <trans-unit id="backend_layout.lexicon" resname="backend_layout.lexicon">
+                <source>Lexicon</source>
+				<target>Lexikon</target>
+            </trans-unit>
+        </body>
+    </file>
+</xliff>

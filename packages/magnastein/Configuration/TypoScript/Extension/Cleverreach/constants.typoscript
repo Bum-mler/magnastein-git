@@ -1,0 +1,12 @@
+// @import 'EXT:cleverreach/Configuration/TypoScript/constants.typoscript'
+plugin.tx_cleverreach {
+    clientId = 185946
+    login = TYPO3
+    password = q=$9&AVoNTJBaSKr\8b7
+    formId = 
+    groupId = 
+    restUrl = https://rest.cleverreach.com/v2
+    source = TYPO3
+    unsubscribemethod = delete
+    debug = 0
+}

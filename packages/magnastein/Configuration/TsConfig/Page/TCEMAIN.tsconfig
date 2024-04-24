@@ -1,0 +1,9 @@
+// rechte setzen bei neuen seiten
+TCEMAIN {
+    permissions {
+        groupid = 5
+        user = show, editcontent, edit, new, delete
+        group = show, editcontent, edit, new, delete
+        everybody = show
+    }
+}

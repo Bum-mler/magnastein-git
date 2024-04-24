@@ -1,0 +1,13 @@
+#
+# PageTS for magnastein
+#
+@import 'EXT:magnastein/Configuration/TsConfig/Page/RTE.tsconfig'
+@import 'EXT:magnastein/Configuration/TsConfig/Page/TCEFORM.tsconfig'
+@import 'EXT:magnastein/Configuration/TsConfig/Page/TCEMAIN.tsconfig'
+
+mod.web_list {
+    # Only pages and sys_category table elements will be linked to in the new record wizard
+    allowedNewTables = pages, tt_content
+}
+
+TCAdefaults.pages.no_search = 1

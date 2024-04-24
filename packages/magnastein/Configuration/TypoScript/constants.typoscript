@@ -1,0 +1,80 @@
+// Abhängigkeiten
+@import 'EXT:bootstrap_package/Configuration/TypoScript/constants.typoscript'
+// @import 'EXT:magnastein/Configuration/TypoScript/Extension/IndexedSearch/constants.typoscript'
+// @import 'EXT:sourceopt/Configuration/TypoScript/constants'
+
+// @import 'EXT:magnastein/Configuration/TypoScript/Extension/Cleverreach/constants.typoscript'
+// @import 'EXT:magnastein/Configuration/TypoScript/Extension/Crawler/constants.typoscript'
+
+page {
+    logo {
+        file = EXT:magnastein/Resources/Public/Images/magna.svg
+        fileInverted = EXT:magnastein/Resources/Public/Images/magna.svg
+        height = 51
+        width = 233
+        alt = Magna Naturstein
+        linktitle = Magna Naturstein
+    }
+    favicon {
+        file = EXT:magnastein/Resources/Public/Icons/favicon.ico
+    }
+    preloader {
+        enable = 1
+    }
+    fluidtemplate {
+        layoutRootPath = EXT:magnastein/Resources/Private/Layouts/Page/
+        partialRootPath = EXT:magnastein/Resources/Private/Partials/Page/
+        templateRootPath = EXT:magnastein/Resources/Private/Templates/Page/
+    }
+    theme {
+
+        navigation {
+            # type=options[Default=default, Default Transition=default-transition, Inverse=inverse, Inverse Transition=inverse-transition]
+            style = default
+            # Default=, Fixed Top=top, Fixed Bottom=bottom
+            type = default
+        }
+        cookieconsent.type = opt-out
+        cookieconsent.content.href = 723
+        cookieconsent.position = bottom-left
+        language.enable = 0
+
+        meta {
+            # Enable to display the MetaSection at bottom
+            enable = 1
+            navigationValue = 75,723,76
+            # type=options list, directory
+            navigationType = list
+            # Navigation include items not in menu
+            includeNotInMenu = 1
+        }
+        copyright {
+            text = © 2024 MAGNA Naturstein GmbH. Alle Rechte vorbehalten.
+        }
+    }
+}
+
+// CONTENT ELEMENTS
+plugin.bootstrap_package_contentelements {
+    view {
+        layoutRootPath = EXT:magnastein/Resources/Private/Layouts/ContentElements/
+        partialRootPath = EXT:magnastein/Resources/Private/Partials/ContentElements/
+        templateRootPath = EXT:magnastein/Resources/Private/Templates/ContentElements/
+    }
+}
+
+plugin.bootstrap_package_contentelements.menu_card.abstract.crop = 100
+
+// Konfiguration
+config {
+    headerComment = Simple [Signs]
+}
+
+// Social Media
+page.theme.socialmedia.channels.facebook.url = https://www.facebook.com/magna.naturstein
+page.theme.socialmedia.channels.instagram.url = https://www.instagram.com/magnastein/
+
+// [page["uid"] == 1]
+// page.theme.navigation.style = default-transition
+// [GLOBAL]
+page.theme.navigation.type = top

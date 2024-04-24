@@ -1,0 +1,21 @@
+{
+    "name": "simplesigns/magnastein",
+    "type": "typo3-cms-extension",
+    "description": "Template",
+    "license": ["GPL-2.0-or-later"],
+    "keywords": ["Sitepackage"],
+    "version": "12.4.14",
+    "require": {
+        "bk2k/bootstrap-package": "^14.0 || ^15.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "Simplesigns\\Magnastein\\": "Classes/"
+        }
+    },
+    "extra": {
+        "typo3/cms": {
+            "extension-key": "magnastein"
+        }
+    }
+}

@@ -1,0 +1,8 @@
+// @import 'EXT:crawler/Configuration/TypoScript/setup.typoscript'
+// page.10.dataProcessing.0987654324 = TYPO3\CMS\Frontend\DataProcessing\SiteProcessor
+// page.10.dataProcessing.0987654324 { as = site }
+
+// tx_crawler.crawlerCfg.paramSets.test = &L=[0-3]
+// tx_crawler.crawlerCfg.paramSets.test {  
+//     procInstrFilter = tx_indexedsearch_reindex_ pidsOnly = 977,947,925,926,906,762,694,295,249,175,210,101,99,200,195,108,105,203,209,183,212,204,1439,1016,981,962,978,963,931,887,928,927,864,842,821,824,757,618,659,660,266,248,247,215,102,184,189,194,188,103,104,207,593,107,106,196,201,1437,1021,924,929,814,726,705,594,182,202,1427,725,709,1140,997,989,957,946,943,919,920,921,922
+// }

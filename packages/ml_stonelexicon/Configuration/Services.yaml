@@ -1,0 +1,19 @@
+services:
+  _defaults:
+    autowire: true
+    autoconfigure: true
+    public: false
+  
+  Simplesigns\MlStonelexicon\Controller\JsonController:
+    arguments:
+      $uriBuilder: '@TYPO3\CMS\Extbase\Mvc\Web\Routing\UriBuilder'
+
+  Simplesigns\MlStonelexicon\Controller\StoneController:
+    autowire: true
+    autoconfigure: true
+    public: true
+    
+  Simplesigns\MlStonelexicon\Domain\Repository\PageRepository:
+    autowire: true
+    autoconfigure: true
+    public: false
