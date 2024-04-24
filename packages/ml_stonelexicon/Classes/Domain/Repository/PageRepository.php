@@ -124,7 +124,11 @@ class PageRepository extends Repository
         }
     
         if (!empty($constraints)) {
-            $query->matching($query->logicalAnd($constraints));
+            if (count($constraints) == 1) {
+                $query->matching($constraints[0]); // Directly use the single constraint
+            } else {
+                $query->matching($query->logicalAnd($constraints)); // Use logicalAnd only if there are multiple constraints
+            }
         }
     
         $query->setLimit((int)$limit);
