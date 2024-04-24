@@ -126,7 +126,7 @@ class PageRepository extends Repository
             if (count($constraints) == 1) {
                 $query->matching($constraints[0]); // Direkt das einzelne Constraint verwenden
             } else {
-                $query->matching($query->logicalAnd($constraints)); // `logicalAnd` nur verwenden, wenn mehrere Constraints vorhanden sind
+                $query->matching($query->logicalAnd(...$constraints)); // `logicalAnd` verwenden mit Spread Operator
             }
         }
     
@@ -137,6 +137,5 @@ class PageRepository extends Repository
     
         return $query->execute();
     }
-    
     
 }
